@@ -1,21 +1,34 @@
 #include <iostream>
 using namespace std;
 
+void display(int arr[], int n)
+{
+    for (int i = 0; i < n; i++)
+    {
+        cout << arr[i] << " ";
+    }
+    cout << endl;
+}
+
 // Function to swap two elements
-void swap(int &a, int &b) {
+void swap(int &a, int &b)
+{
     int temp = a;
     a = b;
     b = temp;
 }
 
 // Partition function
-int partition(int arr[], int low, int high) {
+int partition(int arr[], int low, int high)
+{
     int pivot = arr[high]; // choose the last element as pivot
     int i = (low - 1);     // index of smaller element
 
-    for (int j = low; j < high; j++) {
+    for (int j = low; j < high; j++)
+    {
         // If current element is smaller than or equal to pivot
-        if (arr[j] <= pivot) {
+        if (arr[j] <= pivot)
+        {
             i++; // move the index of smaller element
             swap(arr[i], arr[j]);
         }
@@ -25,8 +38,10 @@ int partition(int arr[], int low, int high) {
 }
 
 // Quick Sort function
-void quickSort(int arr[], int low, int high) {
-    if (low < high) {
+void quickSort(int arr[], int low, int high)
+{
+    if (low < high)
+    {
         // Partitioning index
         int pi = partition(arr, low, high);
 
@@ -37,19 +52,18 @@ void quickSort(int arr[], int low, int high) {
 }
 
 // Driver code
-int main() {
+int main()
+{
     int arr[] = {10, 7, 8, 9, 1, 5};
     int n = sizeof(arr) / sizeof(arr[0]);
 
     cout << "Original array: ";
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
-    cout << endl;
+    display(arr, n);
 
     quickSort(arr, 0, n - 1);
 
     cout << "Sorted array: ";
-    for (int i = 0; i < n; i++) cout << arr[i] << " ";
-    cout << endl;
+    display(arr, n);
 
     return 0;
 }
